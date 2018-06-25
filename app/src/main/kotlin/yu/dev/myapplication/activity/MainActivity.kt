@@ -14,6 +14,7 @@ import android.view.View
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.activity_main.*
 import yu.dev.myapplication.R
+import yu.dev.myapplication.R.id.recycler_button
 import yu.dev.myapplication.fragment.ItemListDialogFragment
 import yu.dev.myapplication.fragment.PlusOneFragment
 import yu.dev.myapplication.fragment.ProfileFragment
@@ -61,6 +62,9 @@ class MainActivity : AppCompatActivity(), PlusOneFragment.OnFragmentInteractionL
         twitter.setOnClickListener {
             signInTwitter()
         }
+        recycler_button.setOnClickListener {
+            showRecycler()
+        }
 
         GlideApp.with(this)
                 .load("http://goo.gl/gEgYUd")
@@ -103,6 +107,11 @@ class MainActivity : AppCompatActivity(), PlusOneFragment.OnFragmentInteractionL
             window.allowEnterTransitionOverlap = false
             val slide = Slide(Gravity.RIGHT)
         }
+    }
+
+    private fun showRecycler() {
+        intent = Intent(this, RecyclerActivity::class.java)
+        startActivity(intent)
     }
 
     private fun showPlus(savedInstanceState: Bundle?) {
